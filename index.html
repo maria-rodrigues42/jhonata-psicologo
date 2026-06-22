@@ -15,20 +15,22 @@
   <style>
     /* === VARIÁVEIS === */
     :root {
-      --color-primary: #162040;
-      --color-primary-hover: #1e2f5a;
+      --color-primary: #0B1628;
+      --color-primary-hover: #162040;
       --color-amber: #C8924A;
       --color-amber-hover: #b07c38;
-      --color-amber-light: #FDF0E0;
-      --color-amber-border: #E8C9A0;
-      --color-bg: #FFFFFF;
-      --color-bg-alt: #F8F5F1;
-      --color-text: #162040;
-      --color-text-muted: #6B7280;
+      --color-amber-light: rgba(200,146,74,0.1);
+      --color-amber-border: rgba(200,146,74,0.22);
+      --color-bg: #0B1628;
+      --color-bg-alt: #0f1e35;
+      --color-card: #142038;
+      --color-text: #E2E8F2;
+      --color-text-muted: #8A9BB8;
+      --color-border: rgba(255,255,255,0.07);
       --color-whatsapp: #25D366;
       --color-whatsapp-hover: #1da851;
       --radius: 12px;
-      --shadow: 0 2px 16px rgba(22,32,64,0.08);
+      --shadow: 0 2px 20px rgba(0,0,0,0.3);
       --transition: 0.2s ease;
       --max-width: 1100px;
       --font-serif: 'Playfair Display', Georgia, serif;
@@ -63,10 +65,9 @@
       margin-bottom: 1rem;
       line-height: 1.3;
     }
-    /* títulos de subseção ficam em navy, não amber */
-    .section__title--dark {
-      color: var(--color-primary);
-    }
+    .section__title--dark { color: var(--color-text); }
+
+    input::placeholder, textarea::placeholder { color: rgba(138,155,184,0.6); }
     .section__subtitle {
       font-size: 1rem;
       color: var(--color-text-muted);
@@ -104,9 +105,9 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--color-bg);
-      border-bottom: 1px solid #e5eef2;
-      box-shadow: var(--shadow);
+      background: var(--color-primary);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
     }
     .navbar__inner {
       display: flex;
@@ -117,7 +118,7 @@
     .navbar__brand {
       font-size: 1.05rem;
       font-weight: 700;
-      color: var(--color-primary);
+      color: var(--color-text);
       font-family: var(--font-serif);
     }
     .navbar__brand span {
@@ -219,19 +220,20 @@
       gap: 1rem;
     }
     .sintoma-card {
-      background: var(--color-amber-light);
-      border: 1px solid var(--color-amber-border);
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius);
       padding: 1.25rem;
       display: flex;
       align-items: flex-start;
       gap: 1rem;
       box-shadow: var(--shadow);
-      transition: transform var(--transition), box-shadow var(--transition);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
     }
     .sintoma-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 24px rgba(200,146,74,0.18);
+      border-color: var(--color-amber-border);
+      box-shadow: 0 6px 28px rgba(0,0,0,0.35);
     }
     .sintoma-card__icon {
       width: 44px;
@@ -268,7 +270,7 @@
       display: flex;
       align-items: flex-start;
       gap: 1rem;
-      background: var(--color-amber-light);
+      background: var(--color-card);
       border-left: 3px solid var(--color-amber);
       border-radius: 0 var(--radius) var(--radius) 0;
       padding: 1.25rem;
@@ -282,7 +284,7 @@
       flex-shrink: 0;
       line-height: 1;
     }
-    .pilar__title { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--color-primary); }
+    .pilar__title { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--color-text); }
     .pilar__desc { font-size: 0.9rem; color: var(--color-text-muted); }
     .pilar__arrow {
       display: flex;
@@ -315,8 +317,8 @@
       object-fit: cover;
       object-position: top center;
       border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      box-shadow: 0 8px 32px rgba(200,146,74,0.2);
-      border: 4px solid var(--color-amber);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+      border: 3px solid var(--color-amber);
     }
     .sobre__content { max-width: 540px; }
     .sobre__badges {
@@ -330,7 +332,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      background: var(--color-amber-light);
+      background: rgba(200,146,74,0.12);
       color: var(--color-amber);
       border: 1px solid var(--color-amber-border);
       font-size: 0.85rem;
@@ -358,26 +360,20 @@
       gap: 1.25rem;
     }
     .depo-card {
-      background: var(--color-amber-light);
-      border: 1px solid var(--color-amber-border);
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius);
       padding: 1.75rem;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
       box-shadow: var(--shadow);
+      transition: border-color var(--transition);
     }
+    .depo-card:hover { border-color: var(--color-amber-border); }
     .depo-card__stars { color: var(--color-amber); font-size: 1rem; letter-spacing: 0.1em; }
-    .depo-card__text { font-size: 0.95rem; color: var(--color-text); line-height: 1.7; font-style: italic; flex: 1; }
+    .depo-card__text { font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.7; font-style: italic; flex: 1; }
     .depo-card__author { font-size: 0.85rem; font-weight: 600; color: var(--color-amber); }
-    .depo-card__placeholder {
-      font-size: 0.72rem;
-      color: #b45309;
-      background: #fef3c7;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      border: 1px solid #fde68a;
-    }
 
     @media (min-width: 768px) {
       .depo__grid { grid-template-columns: repeat(3, 1fr); }
@@ -390,7 +386,8 @@
       gap: 2rem;
     }
     .form-agendamento {
-      background: var(--color-bg);
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius);
       padding: 1.5rem;
       box-shadow: var(--shadow);
@@ -411,12 +408,12 @@
     .form-group input,
     .form-group textarea {
       padding: 0.75rem 1rem;
-      border: 1.5px solid #ccdde6;
+      border: 1.5px solid rgba(255,255,255,0.1);
       border-radius: 8px;
       font-size: 1rem;
       font-family: inherit;
       color: var(--color-text);
-      background: var(--color-bg);
+      background: rgba(255,255,255,0.04);
       transition: border-color var(--transition);
       width: 100%;
     }
@@ -432,7 +429,7 @@
       gap: 1rem;
     }
     .form-fieldset {
-      border: 1.5px solid #ddeaf0;
+      border: 1.5px solid rgba(255,255,255,0.08);
       border-radius: var(--radius);
       padding: 1rem 1.25rem;
     }
@@ -680,19 +677,16 @@
           <div class="depo-card__stars">★★★★★</div>
           <p class="depo-card__text">"A terapia com o Jonatha me ajudou a entender de onde vinha minha ansiedade. Hoje consigo lidar com situações que antes me paralisavam completamente."</p>
           <p class="depo-card__author">— M.S., 28 anos</p>
-          <span class="depo-card__placeholder"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-1px;margin-right:3px"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Depoimento a ser substituído pelo real</span>
         </div>
         <div class="depo-card">
           <div class="depo-card__stars">★★★★★</div>
           <p class="depo-card__text">"Em poucos meses de acompanhamento percebi mudanças que não imaginava possíveis. O processo é acolhedor e muito bem conduzido."</p>
           <p class="depo-card__author">— R.F., 35 anos</p>
-          <span class="depo-card__placeholder"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-1px;margin-right:3px"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Depoimento a ser substituído pelo real</span>
         </div>
         <div class="depo-card">
           <div class="depo-card__stars">★★★★★</div>
           <p class="depo-card__text">"Finalmente encontrei um espaço seguro para falar sobre o que sinto. A TCC me deu ferramentas práticas para o dia a dia."</p>
           <p class="depo-card__author">— A.L., 42 anos</p>
-          <span class="depo-card__placeholder"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-1px;margin-right:3px"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Depoimento a ser substituído pelo real</span>
         </div>
       </div>
     </div>
