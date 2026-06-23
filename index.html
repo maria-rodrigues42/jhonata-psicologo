@@ -237,6 +237,23 @@
       color: var(--color-text);
       margin-bottom: 0.75rem;
     }
+    .hero__specialties {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .hero__specialty-tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--color-amber);
+      background: var(--color-amber-dim);
+      border: 1px solid var(--color-amber-border);
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+    }
     .hero__sub {
       font-size: 1rem;
       color: var(--color-text-muted);
@@ -261,6 +278,7 @@
       .hero__img { width: 310px; height: 375px; }
       .hero__content { text-align: left; order: 0; flex: 1; }
       .hero__sub { margin-left: 0; margin-right: 0; }
+      .hero__specialties { justify-content: flex-start; }
       .hero__ctas { flex-direction: row; }
       .hero__ctas .btn { width: auto; }
     }
@@ -582,8 +600,13 @@
           <em class="hero__em">a ansiedade</em><br>
           sozinho.
         </h1>
-        <p class="hero__ident">Sou Jonatha Krummenauer, psicólogo especialista em ansiedade.</p>
-        <p class="hero__sub">Ajudo adultos a superar a ansiedade e voltar a viver com leveza. Atendimento online para todo o Brasil e presencial em Sapiranga, RS.</p>
+        <p class="hero__ident">Sou Jonatha Krummenauer, psicólogo especialista em:</p>
+        <div class="hero__specialties">
+          <span class="hero__specialty-tag">Ansiedade</span>
+          <span class="hero__specialty-tag">Problemas em relacionamentos</span>
+          <span class="hero__specialty-tag">Procrastinação</span>
+        </div>
+        <p class="hero__sub">Ajudo adultos a superar a ansiedade, melhorar seus relacionamentos e recuperar o foco. Atendimento online para todo o Brasil e presencial em Sapiranga, RS.</p>
         <div class="hero__ctas">
           <a href="#contato" class="btn btn--primary">Agendar consulta</a>
           <a href="https://wa.me/555190144848" target="_blank" rel="noopener" class="btn btn--outline">
